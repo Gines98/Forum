@@ -13,19 +13,31 @@ import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import BannedWords from "../../bannedWords.json";
+import { createPost } from "../../Services/PostService";
 
 export default function Fondo() {
-  const [category, setCategory] = React.useState("");
   const [appropiateTittle, setAppropiateTittle] = React.useState(false);
   const [appropiateBody, setAppropiateBody] = React.useState(false);
   const [file, setFile] = React.useState();
+
+  const [title, settitle] = React.useState(false);
+  const [category, setCategory] = React.useState("");
+  const [body, setbody] = React.useState(false);
+
+  const creaPost = () => {
+    let data = {};
+    data.thread = "videogames";
+    data.title = title;
+    data.category = category;
+    data.body = body;
+    createPost(data);
+  };
 
   const handleChange = (event) => {
     setCategory(event.target.value);
   };
 
   const handleFileChange = (e) => {
-    console.log(e.target.files);
     setFile(URL.createObjectURL(e.target.files[0]));
   };
 
@@ -34,15 +46,14 @@ export default function Fondo() {
     let words = text.split(" ");
     setAppropiateTittle(true);
     for (let i = 0; i < words.length; i += 1) {
-      // console.log(words[i]);
       if (BannedWords.includes(words[i].toLowerCase())) {
         setAppropiateTittle(false);
       }
     }
-    console.log(words);
     if (words.length === 1 && words[0] === "") {
       setAppropiateTittle(false);
     }
+    settitle(text);
   };
 
   const checkWordsBody = (event) => {
@@ -50,7 +61,6 @@ export default function Fondo() {
     let words = text.split(" ");
     setAppropiateBody(true);
     for (let i = 0; i < words.length; i += 1) {
-      // console.log(words[i]);
       if (BannedWords.includes(words[i])) {
         setAppropiateBody(false);
       }
@@ -58,6 +68,7 @@ export default function Fondo() {
     if (words.length === 0 && words[0] === "") {
       setAppropiateBody(false);
     }
+    setbody(text);
   };
 
   return (
@@ -84,6 +95,7 @@ export default function Fondo() {
             label="Title"
             multiline
             onChange={checkWordsTittle}
+            name="title"
           />
           <br />
           <br />
@@ -98,9 +110,9 @@ export default function Fondo() {
                   label="Category"
                   onChange={handleChange}
                 >
-                  <MenuItem value={0}>Question</MenuItem>
-                  <MenuItem value={1}>Suggestion</MenuItem>
-                  <MenuItem value={2}>Clarification</MenuItem>
+                  <MenuItem value={"Question"}>Question</MenuItem>
+                  <MenuItem value={"Suggestion"}>Suggestion</MenuItem>
+                  <MenuItem value={"Clarification"}>Clarification</MenuItem>
                 </Select>
               </FormControl>
             ) : null}
@@ -119,16 +131,23 @@ export default function Fondo() {
           ) : null}
           <br></br>
           <br></br>
-          <h2>Add Image:</h2>
-          <input type="file" onChange={handleFileChange} />
-          <img src={file} />
-
-          <br></br>
-          <br></br>
+          {(appropiateBody && appropiateTittle) === true ? (
+            <>
+              <h2>Add Image:</h2>
+              <input type="file" onChange={handleFileChange} />
+              <img src={file} width="128" height="128" alt="" />
+              <br></br>
+              <br></br>
+            </>
+          ) : null}
 
           {(appropiateBody && appropiateTittle) === true ? (
             <Stack direction="row" spacing={2} align="left">
-              <Button variant="contained" color="success">
+              <Button
+                variant="contained"
+                color="success"
+                onClick={() => creaPost()}
+              >
                 CREATE
               </Button>
             </Stack>

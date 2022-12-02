@@ -7,16 +7,13 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import ForumIcon from "@mui/icons-material/Forum";
-import { Link } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "../../ColorPalette";
-const pages = ["About us"];
+const pages = [""];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);

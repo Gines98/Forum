@@ -32,8 +32,8 @@ export default function Fondo() {
       >
         <List component="nav" aria-label="mailbox folders">
           <Divider />
-          <Link href="/new-thread-videojuegos" underline="hover">
-            <ListItem button divider borderRadius="10px" sx={style}>
+          <Link href="/list/videogames" underline="hover">
+            <ListItem button divider sx={style}>
               <ListItemAvatar>
                 <ForumIcon></ForumIcon>
               </ListItemAvatar>
@@ -45,21 +45,25 @@ export default function Fondo() {
             </ListItem>
             <br></br>
           </Link>
-          <ListItem button divider sx={style}>
-            <ListItemAvatar>
-              <ForumIcon></ForumIcon>
-            </ListItemAvatar>
-            <ListItemText primary="CLIMBING" align="center" />
-          </ListItem>
-          <br></br>
+          <Link href="/list/climbing" underline="hover">
+            <ListItem button divider sx={style}>
+              <ListItemAvatar>
+                <ForumIcon></ForumIcon>
+              </ListItemAvatar>
+              <ListItemText primary="CLIMBING" align="center" />
+            </ListItem>
+            <br></br>
+          </Link>
           <Divider light />
-          <ListItem button divider sx={style}>
-            <ListItemAvatar>
-              <ForumIcon></ForumIcon>
-            </ListItemAvatar>
-            <ListItemText primary="LIFESTYLE" align="center" />
-          </ListItem>
-          <br></br>
+          <Link href="/list/lifestyle" underline="hover">
+            <ListItem button divider sx={style}>
+              <ListItemAvatar>
+                <ForumIcon></ForumIcon>
+              </ListItemAvatar>
+              <ListItemText primary="LIFESTYLE" align="center" />
+            </ListItem>
+            <br></br>
+          </Link>
         </List>
       </Container>
     </React.Fragment>

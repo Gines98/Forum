@@ -1,0 +1,5 @@
+com\Project\Forum\Repository\IPostRepository.class
+com\Project\Forum\Controller\PostController.class
+com\Project\Forum\Model\Post.class
+com\Project\Forum\Service\PostService.class
+com\Project\Forum\ForumApplication.class

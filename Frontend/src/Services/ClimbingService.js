@@ -1,5 +1,5 @@
-export async function getAllAirplanes() {
-  const API_URL = "http://localhost:9002/airplanes";
+export async function getAllClimbingPosts() {
+  const API_URL = "http://localhost:8082/posts/climbing";
   try {
     const response = await fetch(API_URL);
     const data = await response.json();
