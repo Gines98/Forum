@@ -23,6 +23,10 @@ public class Post {
 		this.registred = registred;
 	}
 
+	public Post() {
+		
+	}
+
 	/**
 	 * @return the thread
 	 */

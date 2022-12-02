@@ -1,0 +1,3 @@
+com\Project\Forum\Repository\IPostRepository.class
+com\Project\Forum\Model\Post.class
+com\Project\Forum\ForumApplication.class
