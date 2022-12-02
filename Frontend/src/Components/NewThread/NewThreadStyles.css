@@ -1,0 +1,10 @@
+p {
+  font-family: "Helvetica";
+  font-weight: 600;
+  letter-spacing: ".3rem";
+  text-decoration: none;
+}
+
+.input {
+  margin: 20px;
+}
