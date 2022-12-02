@@ -2,11 +2,12 @@ import * as React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import "./ContainerStyles.css";
 import Container from "@mui/material/Container";
-import DepartureAirportSelect from "../DepartureAirportSelect/DepartureAirportSelect";
-import ArrivalAirportSelect from "../ArrivalAirportSelect/ArrivalAirportSelect";
-import TripTypeCheckbox from "../TripTypeCheckbox/TripTypeCheckbox";
-import DepartureDatePicker from "../DepartureDatePicker/DepartureDatePicker";
-import RoundTripDatePicker from "../RoundTripDatePicker/RoundTripDatePicker";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Divider from "@mui/material/Divider";
+import { ListItemAvatar } from "@mui/material";
+import ForumIcon from "@mui/icons-material/Forum";
 
 export default function Fondo() {
   const [isArrivalActive, setIsArrivalActive] = React.useState(false);
@@ -16,7 +17,12 @@ export default function Fondo() {
   const [arrivalAirport, setArrivalAirport] = React.useState("");
   const [departureAirport, setDepartureAirport] = React.useState("");
   const [departureDate, setDepartureDate] = React.useState("");
-
+  const style = {
+    width: "100%",
+    align: "center",
+    bgcolor: "black",
+    color: "white",
+  };
   return (
     <React.Fragment>
       <CssBaseline />
@@ -27,31 +33,31 @@ export default function Fondo() {
           bgcolor: "#0000",
           height: "80vh",
           width: "100vh",
-          textAlign: "center",
+          textlign: "center",
         }}
       >
-        <p className="text">Please choose the departure airport</p>
-        <DepartureAirportSelect
-          onIsArrivalActiveChange={setIsArrivalActive}
-          setDepartureAirport={setDepartureAirport}
-        ></DepartureAirportSelect>
-        <ArrivalAirportSelect
-          isArrivalActive={isArrivalActive}
-          onIsTripTypeChange={setIsTripTypeActive}
-          setArrivalAirport={setArrivalAirport}
-        ></ArrivalAirportSelect>
-        <TripTypeCheckbox
-          isTripTypeActive={isTripTypeActive}
-          isSecondDatePickerActive={isSecondDatePickerActive}
-          onIsSecondDatePickerActive={setIsSecondDatePickerActive}
-        ></TripTypeCheckbox>
-        <DepartureDatePicker
-          isTripTypeActive={isTripTypeActive}
-          setDepartureDate={setDepartureDate}
-        ></DepartureDatePicker>
-        <RoundTripDatePicker
-          isSecondDatePickerActive={isSecondDatePickerActive}
-        ></RoundTripDatePicker>
+        <List sx={style} component="nav" aria-label="mailbox folders">
+          <Divider />
+          <ListItem button divider>
+            <ListItemAvatar>
+              <ForumIcon></ForumIcon>
+            </ListItemAvatar>
+            <ListItemText primary="VIDEOJUEGOS" align="center" />
+          </ListItem>
+          <ListItem button divider>
+            <ListItemAvatar>
+              <ForumIcon></ForumIcon>
+            </ListItemAvatar>
+            <ListItemText primary="ESCALADA" align="center" />
+          </ListItem>
+          <Divider light />
+          <ListItem button divider>
+            <ListItemAvatar>
+              <ForumIcon></ForumIcon>
+            </ListItemAvatar>
+            <ListItemText primary="LIFESTYLE" align="center" />
+          </ListItem>
+        </List>
       </Container>
     </React.Fragment>
   );
