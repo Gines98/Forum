@@ -8,15 +8,9 @@ import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
 import { ListItemAvatar } from "@mui/material";
 import ForumIcon from "@mui/icons-material/Forum";
+import Link from "@mui/material/Link";
 
 export default function Fondo() {
-  const [isArrivalActive, setIsArrivalActive] = React.useState(false);
-  const [isTripTypeActive, setIsTripTypeActive] = React.useState(false);
-  const [isSecondDatePickerActive, setIsSecondDatePickerActive] =
-    React.useState(false);
-  const [arrivalAirport, setArrivalAirport] = React.useState("");
-  const [departureAirport, setDepartureAirport] = React.useState("");
-  const [departureDate, setDepartureDate] = React.useState("");
   const style = {
     width: "100%",
     align: "center",
@@ -30,33 +24,42 @@ export default function Fondo() {
         maxWidth="m"
         sx={{
           marginTop: "5%",
-          bgcolor: "#0000",
+          bgcolor: "#ffff",
           height: "80vh",
           width: "100vh",
           textlign: "center",
         }}
       >
-        <List sx={style} component="nav" aria-label="mailbox folders">
+        <List component="nav" aria-label="mailbox folders">
           <Divider />
-          <ListItem button divider>
+          <Link href="/new-thread-videojuegos" underline="hover">
+            <ListItem button divider borderRadius="10px" sx={style}>
+              <ListItemAvatar>
+                <ForumIcon></ForumIcon>
+              </ListItemAvatar>
+              <ListItemText
+                primary="VIDEOGAMES"
+                align="center"
+                className="element"
+              />
+            </ListItem>
+            <br></br>
+          </Link>
+          <ListItem button divider sx={style}>
             <ListItemAvatar>
               <ForumIcon></ForumIcon>
             </ListItemAvatar>
-            <ListItemText primary="VIDEOJUEGOS" align="center" />
+            <ListItemText primary="CLIMBING" align="center" />
           </ListItem>
-          <ListItem button divider>
-            <ListItemAvatar>
-              <ForumIcon></ForumIcon>
-            </ListItemAvatar>
-            <ListItemText primary="ESCALADA" align="center" />
-          </ListItem>
+          <br></br>
           <Divider light />
-          <ListItem button divider>
+          <ListItem button divider sx={style}>
             <ListItemAvatar>
               <ForumIcon></ForumIcon>
             </ListItemAvatar>
             <ListItemText primary="LIFESTYLE" align="center" />
           </ListItem>
+          <br></br>
         </List>
       </Container>
     </React.Fragment>

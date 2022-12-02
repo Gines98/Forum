@@ -4,6 +4,7 @@ p {
   letter-spacing: ".3rem";
   text-decoration: none;
 }
-.element:hover {
-  opacity: 0 !important;
+
+.input {
+  margin: 20px;
 }
