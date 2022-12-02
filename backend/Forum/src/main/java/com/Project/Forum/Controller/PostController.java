@@ -40,13 +40,13 @@ public class PostController {
 			return new ResponseEntity<>(lista, HttpStatus.OK);
 		}
 	}
-	
+
 	@GetMapping(value = "/posts/{thread}/{title}")
 	public ResponseEntity<Post> getPostsByTitle(@PathVariable String thread, @PathVariable String title) {
-		if (this.service.getPostByTitle(thread, title) == null) {
+		if (this.service.getPostByTitle(title) == null) {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		} else {
-			return new ResponseEntity<>(this.service.getPostByTitle(thread, title), HttpStatus.OK);
+			return new ResponseEntity<>(this.service.getPostByTitle(title), HttpStatus.OK);
 		}
 	}
 
@@ -63,20 +63,16 @@ public class PostController {
 
 	@DeleteMapping(value = "/posts/{thread}/{title}")
 	public void deleteUserByIdenfitication(@PathVariable String thread, @PathVariable String title) {
-		this.service.deletePostByThread(thread, title);
+		this.service.deletePostByThread(title);
 	}
 
 	@PutMapping(value = "/posts/{thread}/{title}")
-	public Post updateUser(@PathVariable String thread,
-			@PathVariable String title,
-			@RequestParam(name = "newThread") String newThread,
-			@RequestParam(name = "newTitle") String newTitle,
-			@RequestParam(name = "category") String category,
-			@RequestParam(name = "body") String body,
-			@RequestParam(name = "registred") boolean registred) {
+	public Post updateUser(@PathVariable String title, @RequestParam(name = "thread") String thread,
+			@RequestParam(name = "newTitle") String newTitle, @RequestParam(name = "category") String category,
+			@RequestParam(name = "body") String body, @RequestParam(name = "registred") boolean registred) {
 
-		Post post = new Post(newThread, newTitle, category, body, registred);
-		this.service.deletePostByThread(thread, title);
+		Post post = new Post(thread, newTitle, category, body, registred);
+		this.service.deletePostByThread(title);
 		this.service.insertPost(post);
 		return post;
 	}

@@ -22,8 +22,8 @@ public class PostService {
 		return postRepo.findPostByThread(thread);
 	}
 
-	public Post getPostByTitle(String thread, String title) {
-		return postRepo.findPostByTitle(thread, title);
+	public Post getPostByTitle(String title) {
+		return postRepo.findPostByTitle(title);
 	}
 
 	// POST
@@ -32,8 +32,8 @@ public class PostService {
 	}
 
 	// DELETE
-	public void deletePostByThread(String thread, String title) {
-		postRepo.deletePostByThread(thread, title);
+	public void deletePostByThread(String title) {
+		postRepo.deletePostByThread(title);
 		;
 	}
 

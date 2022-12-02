@@ -11,9 +11,10 @@ public interface IPostRepository extends MongoRepository<Post, String> {
 	@Query("{'thread':?0}")
 	List<Post> findPostByThread(String thread);
 
-	@Query("{'thread': ?0, 'title': ?0}")
-	Post findPostByTitle(String thread, String title);
+	@Query("{'title': ?0}")
+	Post findPostByTitle(String title);
 
-	void deletePostByThread(String thread, String title);
+	@Query(value="{'title': ?0}", delete = true)
+	void deletePostByThread(String title);
 
 }
